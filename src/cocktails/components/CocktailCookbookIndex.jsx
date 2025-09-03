@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { fetchCocktails } from "../helpers";
 
-function CocktailCookbookIndex() {
+function CocktailCookbookIndex({ indexLetter = "a" }) {
   const [cocktails, setCocktails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +10,7 @@ function CocktailCookbookIndex() {
   useEffect(() => {
     async function loadCocktails() {
       try {
-        const drinks = await fetchCocktails();
+        const drinks = await fetchCocktails(indexLetter);
         setCocktails(drinks);
       } catch (e) {
         setError(e.message);
@@ -20,7 +20,7 @@ function CocktailCookbookIndex() {
     }
 
     loadCocktails();
-  }, []);
+  }, [indexLetter]);
 
   if (loading) return <p>Loading cocktails...</p>;
   if (error) return <p>Error: {error}</p>;
