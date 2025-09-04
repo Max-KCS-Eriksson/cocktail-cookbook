@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { fetchCocktails } from "../helpers";
 
-function CocktailCookbookIndex({ indexLetter = "a" }) {
+function CocktailCookbookIndex() {
+  const { indexLetter = "a" } = useParams();
   const [cocktails, setCocktails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
