@@ -13,3 +13,16 @@ export async function fetchCocktails(indexLetter) {
     ? data.drinks.sort((a, b) => a.strDrink.localeCompare(b.strDrink))
     : [];
 }
+
+/**
+ * Returns an array of the alphabet in capital letters.
+ */
+export function createAlphabetList() {
+  const A_INDEX = 65;
+  const Z_INDEX = 90;
+  let alphabet = [];
+  for (let i = A_INDEX; i <= Z_INDEX; i++) {
+    alphabet.push(String.fromCharCode(i));
+  }
+  return alphabet;
+}
