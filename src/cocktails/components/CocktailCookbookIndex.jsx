@@ -28,7 +28,7 @@ function CocktailCookbookIndex({ indexLetter = "a" }) {
 
   return (
     <>
-      <h2>Index</h2>
+      <h2>Index - {indexLetter.toUpperCase()}</h2>
       <ul>
         {cocktails.map((cocktail) => (
           <li key={cocktail.idDrink}>{cocktail.strDrink}</li>
