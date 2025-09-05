@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { fetchCocktails } from "../helpers";
 
@@ -33,7 +33,11 @@ function CocktailCookbookIndex() {
       <h2>Index - {indexLetter.toUpperCase()}</h2>
       <ul>
         {cocktails.map((cocktail) => (
-          <li key={cocktail.idDrink}>{cocktail.strDrink}</li>
+          <li key={cocktail.idDrink}>
+            <Link to={`/cocktail/${cocktail.idDrink}`}>
+              {cocktail.strDrink}
+            </Link>
+          </li>
         ))}
       </ul>
     </>
