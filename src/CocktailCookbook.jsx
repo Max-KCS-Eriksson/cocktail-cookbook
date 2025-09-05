@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import CocktailCookbookIndex from "./cocktails/components/CocktailCookbookIndex";
 import { createAlphabetList } from "./cocktails/helpers";
+import CocktailDetails from "./cocktails/components/CocktailDetails";
 
 function CocktailCookbook() {
   const alphabet = createAlphabetList();
@@ -24,6 +25,7 @@ function CocktailCookbook() {
             path="/cocktails/:indexLetter"
             element={<CocktailCookbookIndex />}
           />
+          <Route path="/cocktail/:id" element={<CocktailDetails />} />
         </Routes>
       </section>
     </Router>
