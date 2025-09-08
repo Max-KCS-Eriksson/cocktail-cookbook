@@ -31,6 +31,8 @@ function CocktailCookbook() {
       <main>
         <h1>Cocktail Cookbook</h1>
         <nav>
+          <Link to={"/"}>Home</Link>
+          <Link to={"/cocktails/favorites"}>Favorites</Link>
         </nav>
         <section>
           <Routes>
