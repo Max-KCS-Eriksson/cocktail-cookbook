@@ -45,9 +45,18 @@ function CocktailDetails({ favorites, toggleFavorite }) {
     .slice(0, -1);
   console.log(instructions);
 
+  const isFavorite = favorites.some(
+    (favorite) => favorite.idDrink === cocktail.idDrink,
+  );
+
   return (
     <>
-      <h2>{cocktail.strDrink}</h2>
+      <h2>
+        {cocktail.strDrink}
+        <button onClick={() => toggleFavorite(cocktail)}>
+          {isFavorite ? "★" : "☆"}
+        </button>
+      </h2>
       <section>
         <h3>Ingredients</h3>
         <ul>
