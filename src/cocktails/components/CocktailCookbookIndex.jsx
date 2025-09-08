@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { fetchCocktails } from "../helpers";
 
-function CocktailCookbookIndex() {
+function CocktailCookbookIndex({ favorites, toggleFavorite }) {
   const { indexLetter = "a" } = useParams();
   const [cocktails, setCocktails] = useState([]);
   const [loading, setLoading] = useState(true);

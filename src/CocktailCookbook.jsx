@@ -41,12 +41,33 @@ function CocktailCookbook() {
         </nav>
         <section>
           <Routes>
-            <Route path="/" element={<CocktailCookbookIndex />}></Route>
+            <Route
+              path="/"
+              element={
+                <CocktailCookbookIndex
+                  favorites={favorites}
+                  toggleFavorite={toggleFavorite}
+                />
+              }
+            />
             <Route
               path="/cocktails/:indexLetter"
-              element={<CocktailCookbookIndex />}
+              element={
+                <CocktailCookbookIndex
+                  favorites={favorites}
+                  toggleFavorite={toggleFavorite}
+                />
+              }
             />
-            <Route path="/cocktail/:id" element={<CocktailDetails />} />
+            <Route
+              path="/cocktail/:id"
+              element={
+                <CocktailDetails
+                  favorites={favorites}
+                  toggleFavorite={toggleFavorite}
+                />
+              }
+            />
           </Routes>
         </section>
       </main>

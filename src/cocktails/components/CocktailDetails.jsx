@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function CocktailDetails() {
+function CocktailDetails({ favorites, toggleFavorite }) {
   const { id } = useParams();
   const [cocktail, setCocktail] = useState(null);
   const [loading, setLoading] = useState(true);
