@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import CocktailCookbookIndex from "./cocktails/components/CocktailCookbookIndex";
 import { createAlphabetList } from "./cocktails/helpers";
+import FavoriteIndex from "./cocktails/components/FavoriteIndex";
 import CocktailDetails from "./cocktails/components/CocktailDetails";
 
 function CocktailCookbook() {
@@ -54,6 +55,15 @@ function CocktailCookbook() {
               path="/cocktails/:indexLetter"
               element={
                 <CocktailCookbookIndex
+                  favorites={favorites}
+                  toggleFavorite={toggleFavorite}
+                />
+              }
+            />
+            <Route
+              path="/cocktails/favorites"
+              element={
+                <FavoriteIndex
                   favorites={favorites}
                   toggleFavorite={toggleFavorite}
                 />
