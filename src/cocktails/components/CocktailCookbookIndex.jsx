@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { fetchCocktails } from "../helpers";
+import { createAlphabetList, fetchCocktails } from "../helpers";
 import FavoriteButton from "./FavoriteButton";
 
 function CocktailCookbookIndex({ favorites, toggleFavorite }) {
@@ -29,9 +29,18 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
   if (error) return <p>Error: {error}</p>;
   if (cocktails.length === 0) return <p>No drinks found.</p>;
 
+  const alphabet = createAlphabetList();
+
   return (
     <>
       <h2>Index - {indexLetter.toUpperCase()}</h2>
+      <nav>
+        {alphabet.map((letter) => (
+          <Link key={letter} to={`/cocktails/${letter.toLowerCase()}`}>
+            {letter}
+          </Link>
+        ))}
+      </nav>
       <ul>
         {cocktails.map((cocktail) => (
           <li key={cocktail.idDrink}>
