@@ -10,7 +10,7 @@ function CocktailCookbook() {
 
   return (
     <Router>
-      <section>
+      <main>
         <h1>Cocktail Cookbook</h1>
         <nav>
           {alphabet.map((letter) => (
@@ -19,15 +19,17 @@ function CocktailCookbook() {
             </Link>
           ))}
         </nav>
-        <Routes>
-          <Route path="/" element={<CocktailCookbookIndex />}></Route>
-          <Route
-            path="/cocktails/:indexLetter"
-            element={<CocktailCookbookIndex />}
-          />
-          <Route path="/cocktail/:id" element={<CocktailDetails />} />
-        </Routes>
-      </section>
+        <section>
+          <Routes>
+            <Route path="/" element={<CocktailCookbookIndex />}></Route>
+            <Route
+              path="/cocktails/:indexLetter"
+              element={<CocktailCookbookIndex />}
+            />
+            <Route path="/cocktail/:id" element={<CocktailDetails />} />
+          </Routes>
+        </section>
+      </main>
     </Router>
   );
 }
