@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { fetchCocktails } from "../helpers";
+import FavoriteButton from "./FavoriteButton";
 
 function CocktailCookbookIndex({ favorites, toggleFavorite }) {
   const { indexLetter = "a" } = useParams();
@@ -37,6 +38,11 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
             <Link to={`/cocktail/${cocktail.idDrink}`}>
               {cocktail.strDrink}
             </Link>
+            <FavoriteButton
+              cocktail={cocktail}
+              favorites={favorites}
+              toggleFavorite={toggleFavorite}
+            />
           </li>
         ))}
       </ul>

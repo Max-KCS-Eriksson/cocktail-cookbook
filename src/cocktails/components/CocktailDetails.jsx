@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import FavoriteButton from "./FavoriteButton";
+
 function CocktailDetails({ favorites, toggleFavorite }) {
   const { id } = useParams();
   const [cocktail, setCocktail] = useState(null);
@@ -45,17 +47,15 @@ function CocktailDetails({ favorites, toggleFavorite }) {
     .slice(0, -1);
   console.log(instructions);
 
-  const isFavorite = favorites.some(
-    (favorite) => favorite.idDrink === cocktail.idDrink,
-  );
-
   return (
     <>
       <h2>
         {cocktail.strDrink}
-        <button onClick={() => toggleFavorite(cocktail)}>
-          {isFavorite ? "★" : "☆"}
-        </button>
+        <FavoriteButton
+          cocktail={cocktail}
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
+        />
       </h2>
       <section>
         <h3>Ingredients</h3>
