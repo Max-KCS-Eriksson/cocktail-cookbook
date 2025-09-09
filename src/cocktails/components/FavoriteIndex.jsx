@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import FavoriteButton from "./FavoriteButton";
 
 function FavoriteIndex({ favorites, toggleFavorite }) {
-  if (favorites.length === 0) return <p>No favorites.</p>;
-
-  return (
-    <>
-      <h2>Favorites</h2>
+  let componentContent;
+  if (favorites.length === 0) componentContent = <p>No favorites.</p>;
+  else
+    componentContent = (
       <ul>
         {favorites.map((cocktail) => (
           <li key={cocktail.idDrink}>
@@ -23,6 +22,12 @@ function FavoriteIndex({ favorites, toggleFavorite }) {
           </li>
         ))}
       </ul>
+    );
+
+  return (
+    <>
+      <h2>Favorites</h2>
+      {componentContent}
     </>
   );
 }

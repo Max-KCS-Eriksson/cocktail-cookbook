@@ -29,52 +29,64 @@ function CocktailDetails({ favorites, toggleFavorite }) {
     loadCocktail();
   }, [id]);
 
-  if (loading) return <p>Loading cocktails...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!cocktail) return <p>No drink found.</p>;
-
-  let ingredients = {};
-  for (let i = 1; i <= 15; i++) {
-    const ingredient = cocktail[`strIngredient${i}`];
-    const measurement = cocktail[`strMeasure${i}`];
-    if (!ingredient) break;
-    ingredients[ingredient] = measurement;
-  }
-
-  const instructions = cocktail.strInstructions
-    .split(".")
-    // Last element is an empty string
-    .slice(0, -1);
-  console.log(instructions);
-
-  return (
-    <>
-      <h2>
+  let headingContent = "Cocktail Details";
+  let componentContent;
+  if (loading) componentContent = <p>Loading cocktail...</p>;
+  else if (error) componentContent = <p>Error: {error}</p>;
+  else if (!cocktail) componentContent = <p>No drink found.</p>;
+  else {
+    headingContent = (
+      <>
         {cocktail.strDrink}
         <FavoriteButton
           cocktail={cocktail}
           favorites={favorites}
           toggleFavorite={toggleFavorite}
         />
-      </h2>
-      <section>
-        <h3>Ingredients</h3>
-        <ul>
-          {Object.entries(ingredients).map(([ingredient, measurement]) => (
-            <li key={ingredient}>
-              {measurement ? `${ingredient} - ${measurement}` : ingredient}
-            </li>
-          ))}
-        </ul>
-      </section>
-      <section>
-        <h3>Instructions</h3>
-        <ul>
-          {instructions.map((instruction) => (
-            <li key={instruction}>{instruction}.</li>
-          ))}
-        </ul>
-      </section>
+      </>
+    );
+
+    let ingredients = {};
+    for (let i = 1; i <= 15; i++) {
+      const ingredient = cocktail[`strIngredient${i}`];
+      const measurement = cocktail[`strMeasure${i}`];
+      if (!ingredient) break;
+      ingredients[ingredient] = measurement;
+    }
+
+    const instructions = cocktail.strInstructions
+      .split(".")
+      // Last element is an empty string
+      .slice(0, -1);
+
+    componentContent = (
+      <>
+        <section>
+          <h3>Ingredients</h3>
+          <ul>
+            {Object.entries(ingredients).map(([ingredient, measurement]) => (
+              <li key={ingredient}>
+                {measurement ? `${ingredient} - ${measurement}` : ingredient}
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section>
+          <h3>Instructions</h3>
+          <ul>
+            {instructions.map((instruction) => (
+              <li key={instruction}>{instruction}.</li>
+            ))}
+          </ul>
+        </section>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <h2>{headingContent}</h2>
+      {componentContent}
     </>
   );
 }
