@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import FavoriteButton from "./FavoriteButton";
+
 function FavoriteIndex({ favorites, toggleFavorite }) {
   if (favorites.length === 0) return <p>No favorites.</p>;
 
@@ -13,7 +15,11 @@ function FavoriteIndex({ favorites, toggleFavorite }) {
             <Link to={`/cocktail/${cocktail.idDrink}`}>
               {cocktail.strDrink}
             </Link>
-            <button onClick={() => toggleFavorite(cocktail)}>Remove</button>
+            <FavoriteButton
+              cocktail={cocktail}
+              favorites={favorites}
+              toggleFavorite={toggleFavorite}
+            />
           </li>
         ))}
       </ul>
