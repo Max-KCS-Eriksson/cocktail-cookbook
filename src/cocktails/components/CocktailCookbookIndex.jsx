@@ -67,7 +67,10 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
           </Link>
         ))}
       </nav>
-      {componentContent}
+      <section>
+        <h3>Cocktails</h3>
+        {componentContent}
+      </section>
     </>
   );
 }
