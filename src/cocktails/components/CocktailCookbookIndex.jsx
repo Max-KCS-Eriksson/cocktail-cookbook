@@ -75,6 +75,11 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
             {letter}
           </Link>
         ))}
+        {validIntegerIndexes.map((integer) => (
+          <Link key={integer} to={`/cocktails/index/${integer}`}>
+            {integer}
+          </Link>
+        ))}
       </nav>
       {componentContent}
     </>
