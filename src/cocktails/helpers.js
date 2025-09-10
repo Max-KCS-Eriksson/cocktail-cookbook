@@ -15,6 +15,19 @@ export async function fetchCocktails(cookbookIndex) {
 }
 
 /**
+ * Returns an array of valid indexes for the `fetchCocktails` method.
+ */
+export function createValidIndexList() {
+  const integerIndexMin = 0;
+  const integerIndexMax = 9;
+  let validIndexes = createAlphabetList();
+  for (let i = integerIndexMin; i <= integerIndexMax; i++) {
+    validIndexes.push(String(i));
+  }
+  return validIndexes;
+}
+
+/**
  * Returns an array of the alphabet in capital letters.
  */
 export function createAlphabetList() {

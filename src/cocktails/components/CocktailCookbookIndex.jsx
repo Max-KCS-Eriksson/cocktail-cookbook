@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { createAlphabetList, fetchCocktails } from "../helpers";
+import { createValidIndexList, fetchCocktails } from "../helpers";
 import FavoriteButton from "./FavoriteButton";
 import NotFound from "../../response-status/NotFound";
 
@@ -11,17 +11,8 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const alphabet = createAlphabetList();
-  const integerIndexMin = 0;
-  const integerIndexMax = 9;
-  let validIntegerIndexes = [];
-  for (let i = integerIndexMin; i <= integerIndexMax; i++) {
-    validIntegerIndexes.push(String(i));
-  }
-
-  const isValidIndex =
-    alphabet.includes(cookbookIndex.toUpperCase()) ||
-    validIntegerIndexes.includes(cookbookIndex);
+  const validIndexes = createValidIndexList();
+  const isValidIndex = validIndexes.includes(cookbookIndex.toUpperCase());
 
   useEffect(() => {
     if (!isValidIndex) return;
@@ -70,14 +61,9 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
     <>
       <h2>Index - {cookbookIndex.toUpperCase()}</h2>
       <nav>
-        {alphabet.map((letter) => (
-          <Link key={letter} to={`/cocktails/index/${letter.toLowerCase()}`}>
-            {letter}
-          </Link>
-        ))}
-        {validIntegerIndexes.map((integer) => (
-          <Link key={integer} to={`/cocktails/index/${integer}`}>
-            {integer}
+        {validIndexes.map((index) => (
+          <Link key={index} to={`/cocktails/index/${index.toLowerCase()}`}>
+            {index.toUpperCase()}
           </Link>
         ))}
       </nav>
