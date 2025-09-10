@@ -54,7 +54,7 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
       <h2>Index - {indexLetter.toUpperCase()}</h2>
       <nav>
         {alphabet.map((letter) => (
-          <Link key={letter} to={`/cocktails/${letter.toLowerCase()}`}>
+          <Link key={letter} to={`/cocktails/index/${letter.toLowerCase()}`}>
             {letter}
           </Link>
         ))}
