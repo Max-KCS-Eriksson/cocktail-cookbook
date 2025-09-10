@@ -48,7 +48,7 @@ function CocktailCookbook() {
               }
             />
             <Route
-              path="/cocktails/index/:indexLetter"
+              path="/cocktails/index/:cookbookIndex"
               element={
                 <CocktailCookbookIndex
                   favorites={favorites}

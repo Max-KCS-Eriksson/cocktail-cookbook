@@ -2,10 +2,10 @@
  * Fetch list of cocktails by the first letter of the name, given as an
  * argument, then return the list alphabetically sorted.
  */
-export async function fetchCocktails(indexLetter) {
+export async function fetchCocktails(cookbookIndex) {
   const API_BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/";
 
-  const response = await fetch(`${API_BASE_URL}search.php?f=${indexLetter}`);
+  const response = await fetch(`${API_BASE_URL}search.php?f=${cookbookIndex}`);
   if (!response.ok) throw new Error(response.status);
 
   const data = await response.json();

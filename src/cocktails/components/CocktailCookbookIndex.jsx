@@ -6,20 +6,20 @@ import FavoriteButton from "./FavoriteButton";
 import NotFound from "../../response-status/NotFound";
 
 function CocktailCookbookIndex({ favorites, toggleFavorite }) {
-  const { indexLetter = "a" } = useParams();
+  const { cookbookIndex = "a" } = useParams();
   const [cocktails, setCocktails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const alphabet = createAlphabetList();
-  const isValidIndex = alphabet.includes(indexLetter.toUpperCase());
+  const isValidIndex = alphabet.includes(cookbookIndex.toUpperCase());
 
   useEffect(() => {
     if (!isValidIndex) return;
 
     async function loadCocktails() {
       try {
-        const drinks = await fetchCocktails(indexLetter);
+        const drinks = await fetchCocktails(cookbookIndex);
         setCocktails(drinks);
       } catch (e) {
         setError(e.message);
@@ -29,11 +29,13 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
     }
 
     loadCocktails();
-  }, [indexLetter, isValidIndex]);
+  }, [cookbookIndex, isValidIndex]);
 
   let componentContent;
   if (!isValidIndex)
-    componentContent = <NotFound message={`Invalid index "${indexLetter}".`} />;
+    componentContent = (
+      <NotFound message={`Invalid index "${cookbookIndex}".`} />
+    );
   else if (loading) componentContent = <p>Loading cocktails...</p>;
   else if (error) componentContent = <p>Error: {error}</p>;
   else if (cocktails.length === 0) componentContent = <p>No drinks found.</p>;
@@ -57,7 +59,7 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
 
   return (
     <>
-      <h2>Index - {indexLetter.toUpperCase()}</h2>
+      <h2>Index - {cookbookIndex.toUpperCase()}</h2>
       <nav>
         {alphabet.map((letter) => (
           <Link key={letter} to={`/cocktails/index/${letter.toLowerCase()}`}>
