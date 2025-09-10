@@ -12,7 +12,16 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
   const [error, setError] = useState(null);
 
   const alphabet = createAlphabetList();
-  const isValidIndex = alphabet.includes(cookbookIndex.toUpperCase());
+  const integerIndexMin = 0;
+  const integerIndexMax = 9;
+  let validIntegerIndexes = [];
+  for (let i = integerIndexMin; i <= integerIndexMax; i++) {
+    validIntegerIndexes.push(String(i));
+  }
+
+  const isValidIndex =
+    alphabet.includes(cookbookIndex.toUpperCase()) ||
+    validIntegerIndexes.includes(cookbookIndex);
 
   useEffect(() => {
     if (!isValidIndex) return;
