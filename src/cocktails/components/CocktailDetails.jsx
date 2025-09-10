@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import FavoriteButton from "./FavoriteButton";
+import NotFound from "../../response-status/NotFound";
 
 function CocktailDetails({ favorites, toggleFavorite }) {
   const { id } = useParams();
@@ -18,7 +19,7 @@ function CocktailDetails({ favorites, toggleFavorite }) {
         if (!response.ok) throw new Error(response.status);
 
         const data = await response.json();
-        setCocktail(data.drinks ? data.drinks[0] : {});
+        setCocktail(data.drinks ? data.drinks[0] : null);
       } catch (e) {
         setError(e.message);
       } finally {
@@ -32,9 +33,10 @@ function CocktailDetails({ favorites, toggleFavorite }) {
   let headingContent = "Cocktail Details";
   let componentContent;
   if (loading) componentContent = <p>Loading cocktail...</p>;
-  else if (error) componentContent = <p>Error: {error}</p>;
-  else if (!cocktail) componentContent = <p>No drink found.</p>;
-  else {
+  else if (!cocktail || error) {
+    componentContent = <NotFound message={`Invalid ID "${id}".`} />;
+    if (error) console.error(error); // Occurs due to invalid `id`
+  } else {
     headingContent = (
       <>
         {cocktail.strDrink}

@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { createAlphabetList, fetchCocktails } from "../helpers";
 import FavoriteButton from "./FavoriteButton";
+import NotFound from "../../response-status/NotFound";
 
 function CocktailCookbookIndex({ favorites, toggleFavorite }) {
   const { indexLetter = "a" } = useParams();
@@ -10,7 +11,12 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const alphabet = createAlphabetList();
+  const isValidIndex = alphabet.includes(indexLetter.toUpperCase());
+
   useEffect(() => {
+    if (!isValidIndex) return;
+
     async function loadCocktails() {
       try {
         const drinks = await fetchCocktails(indexLetter);
@@ -23,10 +29,12 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
     }
 
     loadCocktails();
-  }, [indexLetter]);
+  }, [indexLetter, isValidIndex]);
 
   let componentContent;
-  if (loading) componentContent = <p>Loading cocktails...</p>;
+  if (!isValidIndex)
+    componentContent = <NotFound message={`Invalid index "${indexLetter}".`} />;
+  else if (loading) componentContent = <p>Loading cocktails...</p>;
   else if (error) componentContent = <p>Error: {error}</p>;
   else if (cocktails.length === 0) componentContent = <p>No drinks found.</p>;
   else
@@ -47,14 +55,12 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
       </ul>
     );
 
-  const alphabet = createAlphabetList();
-
   return (
     <>
       <h2>Index - {indexLetter.toUpperCase()}</h2>
       <nav>
         {alphabet.map((letter) => (
-          <Link key={letter} to={`/cocktails/${letter.toLowerCase()}`}>
+          <Link key={letter} to={`/cocktails/index/${letter.toLowerCase()}`}>
             {letter}
           </Link>
         ))}
