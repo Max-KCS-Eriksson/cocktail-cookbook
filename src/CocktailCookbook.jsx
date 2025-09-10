@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import CocktailCookbookIndex from "./cocktails/components/CocktailCookbookIndex";
 import FavoriteIndex from "./cocktails/components/FavoriteIndex";
 import CocktailDetails from "./cocktails/components/CocktailDetails";
+import NotFound from "./response-status/NotFound";
 
 function CocktailCookbook() {
   const [favorites, setFavorites] = useState(() => {
@@ -36,6 +37,7 @@ function CocktailCookbook() {
         </nav>
         <section>
           <Routes>
+            <Route path="*" element={<NotFound />} />
             <Route
               path="/"
               element={
@@ -46,7 +48,7 @@ function CocktailCookbook() {
               }
             />
             <Route
-              path="/cocktails/:indexLetter"
+              path="/cocktails/index/:cookbookIndex"
               element={
                 <CocktailCookbookIndex
                   favorites={favorites}

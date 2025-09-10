@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { createAlphabetList, fetchCocktails } from "../helpers";
+import { createValidIndexList, fetchCocktails } from "../helpers";
 import FavoriteButton from "./FavoriteButton";
+import NotFound from "../../response-status/NotFound";
 
 function CocktailCookbookIndex({ favorites, toggleFavorite }) {
-  const { indexLetter = "a" } = useParams();
+  const { cookbookIndex = "a" } = useParams();
   const [cocktails, setCocktails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const validIndexes = createValidIndexList();
+  const isValidIndex = validIndexes.includes(cookbookIndex.toUpperCase());
+
   useEffect(() => {
+    if (!isValidIndex) return;
+
     async function loadCocktails() {
       try {
-        const drinks = await fetchCocktails(indexLetter);
+        const drinks = await fetchCocktails(cookbookIndex);
         setCocktails(drinks);
       } catch (e) {
         setError(e.message);
@@ -23,10 +29,14 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
     }
 
     loadCocktails();
-  }, [indexLetter]);
+  }, [cookbookIndex, isValidIndex]);
 
   let componentContent;
-  if (loading) componentContent = <p>Loading cocktails...</p>;
+  if (!isValidIndex)
+    componentContent = (
+      <NotFound message={`Invalid index "${cookbookIndex}".`} />
+    );
+  else if (loading) componentContent = <p>Loading cocktails...</p>;
   else if (error) componentContent = <p>Error: {error}</p>;
   else if (cocktails.length === 0) componentContent = <p>No drinks found.</p>;
   else
@@ -47,15 +57,13 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
       </ul>
     );
 
-  const alphabet = createAlphabetList();
-
   return (
     <>
-      <h2>Index - {indexLetter.toUpperCase()}</h2>
+      <h2>Index - {cookbookIndex.toUpperCase()}</h2>
       <nav>
-        {alphabet.map((letter) => (
-          <Link key={letter} to={`/cocktails/${letter.toLowerCase()}`}>
-            {letter}
+        {validIndexes.map((index) => (
+          <Link key={index} to={`/cocktails/index/${index.toLowerCase()}`}>
+            {index.toUpperCase()}
           </Link>
         ))}
       </nav>
