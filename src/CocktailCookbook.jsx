@@ -53,8 +53,15 @@ function CocktailCookbook() {
         </button>
 
         <nav className={`${isNavToggled ? "active" : ""}`}>
-          <Link to={"/"}>Home</Link>
-          <Link to={"/cocktails/favorites"}>Favorites</Link>
+          <Link to={"/"} onClick={() => setIsNavToggled(false)}>
+            Home
+          </Link>
+          <Link
+            to={"/cocktails/favorites"}
+            onClick={() => setIsNavToggled(false)}
+          >
+            Favorites
+          </Link>
         </nav>
       </header>
 
