@@ -6,6 +6,8 @@ import FavoriteIndex from "./cocktails/components/FavoriteIndex";
 import CocktailDetails from "./cocktails/components/CocktailDetails";
 import NotFound from "./response-status/NotFound";
 
+import "./CocktailCookbook.css";
+
 function CocktailCookbook() {
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem("favorites");
@@ -31,6 +33,13 @@ function CocktailCookbook() {
     <Router>
       <header>
         <h1>Cocktail Cookbook</h1>
+
+        <button className={"hamburger"}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+
         <nav>
           <Link to={"/"}>Home</Link>
           <Link to={"/cocktails/favorites"}>Favorites</Link>
