@@ -1,3 +1,21 @@
+/* Cocktail index */
+
+#index-list {
+  margin: 0.5rem 0;
+}
+
+#index-list h3 {
+  margin: 0.5rem 0;
+}
+
+#index-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1ch;
+}
+
+/* Index navigation */
+
 #index-nav {
   display: flex;
   flex-direction: row;

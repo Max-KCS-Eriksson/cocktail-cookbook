@@ -69,7 +69,7 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
           </Link>
         ))}
       </nav>
-      <section>
+      <section id="index-list">
         <h3>Cocktails</h3>
         {componentContent}
       </section>
