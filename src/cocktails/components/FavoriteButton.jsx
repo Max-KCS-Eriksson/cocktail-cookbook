@@ -4,13 +4,13 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 function FavoriteButton({ cocktail, favorites, toggleFavorite }) {
-  function isFavorite(cocktail) {
-    return favorites.some((favorite) => favorite.idDrink === cocktail.idDrink);
-  }
+  const isFavorite = favorites.some(
+    (favorite) => favorite.idDrink === cocktail.idDrink,
+  );
 
   return (
     <button onClick={() => toggleFavorite(cocktail)}>
-      <FontAwesomeIcon icon={isFavorite(cocktail) ? solidStar : regularStar} />
+      <FontAwesomeIcon icon={isFavorite ? solidStar : regularStar} />
     </button>
   );
 }
