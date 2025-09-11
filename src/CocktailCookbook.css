@@ -1,0 +1,22 @@
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0.9rem;
+}
+
+/* Hamburger button */
+header .hamburger {
+  width: 2.5rem;
+  height: 1.8rem;
+}
+
+header .hamburger .bar {
+  background: var(--white);
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+}
