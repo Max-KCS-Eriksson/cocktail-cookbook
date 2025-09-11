@@ -59,15 +59,20 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
 
   return (
     <>
-      <h2>Index - {cookbookIndex.toUpperCase()}</h2>
-      <nav>
-        {validIndexes.map((index) => (
-          <Link key={index} to={`/cocktails/index/${index.toLowerCase()}`}>
-            {index.toUpperCase()}
-          </Link>
-        ))}
-      </nav>
-      {componentContent}
+      <section>
+        <h2>Index - {cookbookIndex.toUpperCase()}</h2>
+        <nav>
+          {validIndexes.map((index) => (
+            <Link key={index} to={`/cocktails/index/${index.toLowerCase()}`}>
+              {index.toUpperCase()}
+            </Link>
+          ))}
+        </nav>
+      </section>
+      <section>
+        <h3>Cocktails</h3>
+        {componentContent}
+      </section>
     </>
   );
 }

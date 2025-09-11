@@ -6,6 +6,8 @@ import FavoriteIndex from "./cocktails/components/FavoriteIndex";
 import CocktailDetails from "./cocktails/components/CocktailDetails";
 import NotFound from "./response-status/NotFound";
 
+import "./CocktailCookbook.css";
+
 function CocktailCookbook() {
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem("favorites");
@@ -27,14 +29,43 @@ function CocktailCookbook() {
     });
   };
 
+  const [isNavToggled, setIsNavToggled] = useState(false);
+  const toggleNav = () => setIsNavToggled((state) => !state);
+  useEffect(() => {
+    document.body.style.overflow = isNavToggled ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isNavToggled]);
+
   return (
     <Router>
-      <main>
+      <header>
         <h1>Cocktail Cookbook</h1>
-        <nav>
-          <Link to={"/"}>Home</Link>
-          <Link to={"/cocktails/favorites"}>Favorites</Link>
+
+        <button
+          className={`${isNavToggled ? "hamburger active" : "hamburger"}`}
+          onClick={toggleNav}
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+
+        <nav className={`${isNavToggled ? "active" : ""}`}>
+          <Link to={"/"} onClick={() => setIsNavToggled(false)}>
+            Home
+          </Link>
+          <Link
+            to={"/cocktails/favorites"}
+            onClick={() => setIsNavToggled(false)}
+          >
+            Favorites
+          </Link>
         </nav>
+      </header>
+
+      <main className={`${isNavToggled ? "fade" : ""}`}>
         <section>
           <Routes>
             <Route path="*" element={<NotFound />} />
