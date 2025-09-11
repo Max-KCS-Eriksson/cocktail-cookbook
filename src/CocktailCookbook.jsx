@@ -52,7 +52,7 @@ function CocktailCookbook() {
           <span className="bar"></span>
         </button>
 
-        <nav>
+        <nav className={`${isNavToggled ? "active" : ""}`}>
           <Link to={"/"}>Home</Link>
           <Link to={"/cocktails/favorites"}>Favorites</Link>
         </nav>
