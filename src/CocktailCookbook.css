@@ -65,6 +65,11 @@ header .hamburger.active .bar:nth-child(3) {
 
 /* Main */
 
+main {
+  -webkit-transition: ease 0.35s;
+  transition: ease 0.35s;
+}
+
 main.fade {
   opacity: 0.05;
   /* Needed for the overlay `nav` to work */
