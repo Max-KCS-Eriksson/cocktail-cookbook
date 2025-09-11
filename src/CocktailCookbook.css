@@ -62,4 +62,6 @@ header .hamburger.active .bar:nth-child(3) {
 
 main.fade {
   opacity: 0.05;
+  /* Needed for the overlay `nav` to work */
+  pointer-events: none;
 }
