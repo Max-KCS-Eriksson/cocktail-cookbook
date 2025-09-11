@@ -37,7 +37,10 @@ function CocktailCookbook() {
       <header>
         <h1>Cocktail Cookbook</h1>
 
-        <button className={"hamburger"} onClick={toggleNav}>
+        <button
+          className={`${isNavToggled ? "hamburger active" : "hamburger"}`}
+          onClick={toggleNav}
+        >
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
