@@ -38,3 +38,9 @@ header .hamburger.active .bar:nth-child(2) {
 header .hamburger.active .bar:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
+
+/* Main */
+
+main.fade {
+  opacity: 0.05;
+}

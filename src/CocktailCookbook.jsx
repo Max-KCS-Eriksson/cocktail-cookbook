@@ -31,6 +31,12 @@ function CocktailCookbook() {
 
   const [isNavToggled, setIsNavToggled] = useState(false);
   const toggleNav = () => setIsNavToggled((state) => !state);
+  useEffect(() => {
+    document.body.style.overflow = isNavToggled ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isNavToggled]);
 
   return (
     <Router>
@@ -52,7 +58,7 @@ function CocktailCookbook() {
         </nav>
       </header>
 
-      <main>
+      <main className={`${isNavToggled ? "fade" : ""}`}>
         <section>
           <Routes>
             <Route path="*" element={<NotFound />} />
