@@ -29,12 +29,15 @@ function CocktailCookbook() {
 
   return (
     <Router>
-      <main>
+      <header>
         <h1>Cocktail Cookbook</h1>
         <nav>
           <Link to={"/"}>Home</Link>
           <Link to={"/cocktails/favorites"}>Favorites</Link>
         </nav>
+      </header>
+
+      <main>
         <section>
           <Routes>
             <Route path="*" element={<NotFound />} />
