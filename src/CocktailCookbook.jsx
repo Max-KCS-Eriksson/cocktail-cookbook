@@ -29,12 +29,15 @@ function CocktailCookbook() {
     });
   };
 
+  const [isNavToggled, setIsNavToggled] = useState(false);
+  const toggleNav = () => setIsNavToggled((state) => !state);
+
   return (
     <Router>
       <header>
         <h1>Cocktail Cookbook</h1>
 
-        <button className={"hamburger"}>
+        <button className={"hamburger"} onClick={toggleNav}>
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
