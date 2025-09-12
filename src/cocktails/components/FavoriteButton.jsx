@@ -12,8 +12,7 @@ function FavoriteButton({ cocktail, favorites, toggleFavorite }) {
 
   return (
     <button
-      id="favorite-button"
-      className={`${isFavorite ? "is-favorite" : ""}`}
+      className={`favorite-button ${isFavorite ? "is-favorite" : ""}`}
       onClick={() => toggleFavorite(cocktail)}
     >
       <FontAwesomeIcon icon={isFavorite ? solidStar : regularStar} />
