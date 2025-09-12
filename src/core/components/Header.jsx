@@ -1,23 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import HamburgerButton from "./HamburgerButton";
+
 import "./Header.css";
 
 function Header({ isNavToggled, setIsNavToggled }) {
-  const toggleNav = () => setIsNavToggled((state) => !state);
-
   return (
     <header>
       <h1>Cocktail Cookbook</h1>
 
-      <button
-        className={`${isNavToggled ? "hamburger active" : "hamburger"}`}
-        onClick={toggleNav}
-      >
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
-      </button>
+      <HamburgerButton
+        isNavToggled={isNavToggled}
+        setIsNavToggled={setIsNavToggled}
+      />
 
       <nav className={`${isNavToggled ? "active" : ""}`}>
         <Link to={"/"} onClick={() => setIsNavToggled(false)}>
