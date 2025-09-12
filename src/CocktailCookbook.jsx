@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import Header from "./core/components/Header";
 import CocktailCookbookIndex from "./cocktails/components/CocktailCookbookIndex";
 import FavoriteIndex from "./cocktails/components/FavoriteIndex";
 import CocktailDetails from "./cocktails/components/CocktailDetails";
@@ -30,7 +31,6 @@ function CocktailCookbook() {
   };
 
   const [isNavToggled, setIsNavToggled] = useState(false);
-  const toggleNav = () => setIsNavToggled((state) => !state);
   useEffect(() => {
     document.body.style.overflow = isNavToggled ? "hidden" : "";
     return () => {
@@ -40,30 +40,7 @@ function CocktailCookbook() {
 
   return (
     <Router>
-      <header>
-        <h1>Cocktail Cookbook</h1>
-
-        <button
-          className={`${isNavToggled ? "hamburger active" : "hamburger"}`}
-          onClick={toggleNav}
-        >
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </button>
-
-        <nav className={`${isNavToggled ? "active" : ""}`}>
-          <Link to={"/"} onClick={() => setIsNavToggled(false)}>
-            Home
-          </Link>
-          <Link
-            to={"/cocktails/favorites"}
-            onClick={() => setIsNavToggled(false)}
-          >
-            Favorites
-          </Link>
-        </nav>
-      </header>
+      <Header isNavToggled={isNavToggled} setIsNavToggled={setIsNavToggled} />
 
       <main className={`${isNavToggled ? "fade" : ""}`}>
         <section>
