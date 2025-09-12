@@ -1,0 +1,58 @@
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  /* Enable `header nav` to positions dynamically to `header`'s height. */
+  position: relative;
+}
+
+/* Navigation */
+header nav {
+  display: none;
+}
+
+header nav.active {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+/* Hamburger button */
+header .hamburger {
+  width: 2.5rem;
+  height: 1.8rem;
+}
+
+header .hamburger .bar {
+  background: var(--white);
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: ease 0.35s;
+  transition: ease 0.35s;
+}
+
+header .hamburger.active .bar {
+  background: var(--red);
+}
+
+header .hamburger.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+header .hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+header .hamburger.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
