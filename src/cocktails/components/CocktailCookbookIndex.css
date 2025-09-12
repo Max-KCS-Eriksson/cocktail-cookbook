@@ -8,12 +8,6 @@
   margin: 0.5rem 0;
 }
 
-#index-list ul {
-  display: flex;
-  flex-direction: column;
-  gap: 1ch;
-}
-
 /* Index navigation */
 
 #index-nav {
