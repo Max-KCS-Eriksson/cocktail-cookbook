@@ -5,6 +5,8 @@ import { createValidIndexList, fetchCocktails } from "../helpers";
 import FavoriteButton from "./FavoriteButton";
 import NotFound from "../../response-status/NotFound";
 
+import "./CocktailCookbookIndex.css";
+
 function CocktailCookbookIndex({ favorites, toggleFavorite }) {
   const { cookbookIndex = "a" } = useParams();
   const [cocktails, setCocktails] = useState([]);
@@ -60,14 +62,14 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
   return (
     <>
       <h2>Index - {cookbookIndex.toUpperCase()}</h2>
-      <nav>
+      <nav id="index-nav">
         {validIndexes.map((index) => (
           <Link key={index} to={`/cocktails/index/${index.toLowerCase()}`}>
             {index.toUpperCase()}
           </Link>
         ))}
       </nav>
-      <section>
+      <section id="index-list">
         <h3>Cocktails</h3>
         {componentContent}
       </section>
