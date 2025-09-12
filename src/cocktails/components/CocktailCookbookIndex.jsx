@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { createValidIndexList, fetchCocktails } from "../helpers";
-import FavoriteButton from "./FavoriteButton";
+import CocktailList from "./CocktailList";
 import NotFound from "../../response-status/NotFound";
 
 import "./CocktailCookbookIndex.css";
@@ -43,20 +43,11 @@ function CocktailCookbookIndex({ favorites, toggleFavorite }) {
   else if (cocktails.length === 0) componentContent = <p>No drinks found.</p>;
   else
     componentContent = (
-      <ul>
-        {cocktails.map((cocktail) => (
-          <li key={cocktail.idDrink}>
-            <Link to={`/cocktail/${cocktail.idDrink}`}>
-              {cocktail.strDrink}
-            </Link>
-            <FavoriteButton
-              cocktail={cocktail}
-              favorites={favorites}
-              toggleFavorite={toggleFavorite}
-            />
-          </li>
-        ))}
-      </ul>
+      <CocktailList
+        list={cocktails}
+        favorites={favorites}
+        toggleFavorite={toggleFavorite}
+      />
     );
 
   return (
