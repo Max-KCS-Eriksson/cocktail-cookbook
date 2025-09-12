@@ -1,0 +1,7 @@
+.favorite-button {
+  margin: 0 0.75rem;
+}
+
+button.favorite-button.is-favorite {
+  color: var(--yellow-bright);
+}
