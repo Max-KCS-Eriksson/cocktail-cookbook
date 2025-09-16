@@ -7,6 +7,10 @@ header {
   padding-bottom: 0.75rem;
 }
 
+header h1 {
+  font-size: 1.8em;
+}
+
 /* Navigation */
 header nav {
   display: flex;
