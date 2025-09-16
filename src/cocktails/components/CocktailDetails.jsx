@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import CocktailThumbnail from "./CocktailThumbnail";
 import FavoriteButton from "./FavoriteButton";
 import NotFound from "../../response-status/NotFound";
 
@@ -92,6 +93,7 @@ function CocktailDetails({ favorites, toggleFavorite }) {
   return (
     <>
       <h2>{headingContent}</h2>
+      <CocktailThumbnail cocktail={cocktail} />
       {componentContent}
     </>
   );
