@@ -74,6 +74,10 @@ function CocktailDetails({ favorites, toggleFavorite }) {
           </ul>
         </section>
         <section>
+          <h3>Glass type</h3>
+          <p>{cocktail.strGlass}</p>
+        </section>
+        <section>
           <h3>Instructions</h3>
           <ul>
             {instructions.map((instruction) => (
