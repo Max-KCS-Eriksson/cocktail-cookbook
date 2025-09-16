@@ -9,6 +9,16 @@
     font-size: 1.3rem;
     padding: 1.75rem 1.9rem;
   }
+
+  a {
+    border: 1px solid var(--black);
+    transition: 0.35s ease;
+  }
+
+  a:hover {
+    color: var(--white-bright);
+    border-bottom-color: var(--white-bright);
+  }
 }
 
 /* Main */
