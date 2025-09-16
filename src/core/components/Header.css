@@ -20,7 +20,7 @@ header nav {
   gap: 0.5rem;
 
   opacity: 0;
-  transform: translate(-100%, 162%);
+  transform: translate(-100%, 114%);
   transition:
     opacity 0.35s ease-in,
     transform 0.35s ease-in-out;
@@ -28,5 +28,5 @@ header nav {
 
 header nav.active {
   opacity: 1;
-  transform: translate(0%, 162%);
+  transform: translate(0%, 114%);
 }
