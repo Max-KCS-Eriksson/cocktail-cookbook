@@ -32,3 +32,14 @@ header nav.active {
   transform: translate(0%, 114%);
   pointer-events: auto;
 }
+
+@media screen and (min-width: 992px) {
+  header nav {
+    position: static;
+    flex-direction: row;
+
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}

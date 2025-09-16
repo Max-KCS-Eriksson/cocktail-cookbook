@@ -5,6 +5,13 @@ header .hamburger {
   height: 1.8rem;
 }
 
+@media screen and (min-width: 992px) {
+  header .hamburger {
+    display: none;
+    pointer-events: none;
+  }
+}
+
 /* Bars/X */
 header .hamburger .bar {
   background: var(--white);
