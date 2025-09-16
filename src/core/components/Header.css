@@ -36,6 +36,7 @@ header nav {
 header nav.active {
   opacity: 1;
   transform: translate(0%, 114%);
+  pointer-events: auto;
 }
 
 @media screen and (min-width: 992px) {
