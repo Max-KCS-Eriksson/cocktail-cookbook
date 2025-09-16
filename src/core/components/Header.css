@@ -5,22 +5,28 @@ header {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 0.75rem;
-  /* Enable `header nav` to positions dynamically to `header`'s height. */
-  position: relative;
+}
+
+header h1 {
+  font-size: 1.8em;
 }
 
 /* Navigation */
 header nav {
-  display: none;
-}
-
-header nav.active {
   display: flex;
   position: absolute;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.5rem;
-  top: 100%;
-  left: 0;
-  right: 0;
+
+  opacity: 0;
+  transform: translate(-100%, 114%);
+  transition:
+    opacity 0.35s ease-in,
+    transform 0.35s ease-in-out;
+}
+
+header nav.active {
+  opacity: 1;
+  transform: translate(0%, 114%);
 }
