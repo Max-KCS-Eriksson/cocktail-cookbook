@@ -4,3 +4,7 @@ ul.cocktail-list {
   gap: 1ch;
   margin: 0.5rem 0;
 }
+
+ul.cocktail-list>a {
+  border: none;
+}
