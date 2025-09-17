@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import CocktailThumbnail from "./CocktailThumbnail";
 import FavoriteButton from "./FavoriteButton";
 
 import "./CocktailList.css";
-import CocktailThumbnail from "./CocktailThumbnail";
 
 function CocktailList({ list, favorites, toggleFavorite }) {
   return (
