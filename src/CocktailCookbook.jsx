@@ -7,28 +7,12 @@ import FavoriteIndex from "./cocktails/components/FavoriteIndex";
 import CocktailDetails from "./cocktails/components/CocktailDetails";
 import NotFound from "./response-status/NotFound";
 
+import useFavorites from "./cocktails/hooks/useFavorites";
+
 import "./CocktailCookbook.css";
 
 function CocktailCookbook() {
-  const [favorites, setFavorites] = useState(() => {
-    const saved = localStorage.getItem("favorites");
-    return saved ? JSON.parse(saved) : [];
-  });
-  useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }, [favorites]);
-  const toggleFavorite = (cocktail) => {
-    setFavorites((currentFavorites) => {
-      const isFavorite = currentFavorites.find(
-        (favorite) => favorite.idDrink === cocktail.idDrink,
-      );
-      if (isFavorite)
-        return currentFavorites.filter(
-          (favorite) => favorite.idDrink !== cocktail.idDrink,
-        );
-      else return [...currentFavorites, cocktail];
-    });
-  };
+  const { favorites, toggleFavorite } = useFavorites();
 
   const [isNavToggled, setIsNavToggled] = useState(false);
   useEffect(() => {
