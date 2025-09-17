@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./core/components/Header";
@@ -8,19 +8,13 @@ import CocktailDetails from "./cocktails/components/CocktailDetails";
 import NotFound from "./response-status/NotFound";
 
 import useFavorites from "./cocktails/hooks/useFavorites";
+import useNavToggle from "./core/hooks/useNavToggle";
 
 import "./CocktailCookbook.css";
 
 function CocktailCookbook() {
   const { favorites, toggleFavorite } = useFavorites();
-
-  const [isNavToggled, setIsNavToggled] = useState(false);
-  useEffect(() => {
-    document.body.style.overflow = isNavToggled ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isNavToggled]);
+  const { isNavToggled, setIsNavToggled } = useNavToggle();
 
   return (
     <Router>
