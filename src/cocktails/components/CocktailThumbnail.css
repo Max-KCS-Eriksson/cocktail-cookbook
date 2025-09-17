@@ -9,6 +9,7 @@ img.cocktail-thumbnail.small {
 
 @media screen and (min-width: 992px) {
   img.cocktail-thumbnail {
+    min-width: 200px;
     max-width: 500px;
   }
 }

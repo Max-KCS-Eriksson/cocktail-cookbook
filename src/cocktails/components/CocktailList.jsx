@@ -12,18 +12,23 @@ function CocktailList({ list, favorites, toggleFavorite }) {
       {list.map((cocktail) => (
         <>
           <li key={cocktail.idDrink}>
-            <FavoriteButton
-              cocktail={cocktail}
-              favorites={favorites}
-              toggleFavorite={toggleFavorite}
-            />
-            <Link to={`/cocktail/${cocktail.idDrink}`}>
-              {cocktail.strDrink}
+            <h4>
+              <FavoriteButton
+                cocktail={cocktail}
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+              />
+              <Link to={`/cocktail/${cocktail.idDrink}`}>
+                {cocktail.strDrink}
+              </Link>
+            </h4>
+            <Link
+              className="thumbnail-link"
+              to={`/cocktail/${cocktail.idDrink}`}
+            >
+              <CocktailThumbnail cocktail={cocktail} small={true} />
             </Link>
           </li>
-          <Link to={`/cocktail/${cocktail.idDrink}`}>
-            <CocktailThumbnail cocktail={cocktail} small={true} />
-          </Link>
         </>
       ))}
     </ul>
