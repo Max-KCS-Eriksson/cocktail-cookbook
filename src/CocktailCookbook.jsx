@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./core/components/Header";
@@ -7,36 +7,14 @@ import FavoriteIndex from "./cocktails/components/FavoriteIndex";
 import CocktailDetails from "./cocktails/components/CocktailDetails";
 import NotFound from "./response-status/NotFound";
 
+import useFavorites from "./cocktails/hooks/useFavorites";
+import useNavToggle from "./core/hooks/useNavToggle";
+
 import "./CocktailCookbook.css";
 
 function CocktailCookbook() {
-  const [favorites, setFavorites] = useState(() => {
-    const saved = localStorage.getItem("favorites");
-    return saved ? JSON.parse(saved) : [];
-  });
-  useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }, [favorites]);
-  const toggleFavorite = (cocktail) => {
-    setFavorites((currentFavorites) => {
-      const isFavorite = currentFavorites.find(
-        (favorite) => favorite.idDrink === cocktail.idDrink,
-      );
-      if (isFavorite)
-        return currentFavorites.filter(
-          (favorite) => favorite.idDrink !== cocktail.idDrink,
-        );
-      else return [...currentFavorites, cocktail];
-    });
-  };
-
-  const [isNavToggled, setIsNavToggled] = useState(false);
-  useEffect(() => {
-    document.body.style.overflow = isNavToggled ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isNavToggled]);
+  const { favorites, toggleFavorite } = useFavorites();
+  const { isNavToggled, setIsNavToggled } = useNavToggle();
 
   return (
     <Router>
