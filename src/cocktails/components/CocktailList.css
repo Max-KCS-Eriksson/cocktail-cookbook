@@ -1,0 +1,14 @@
+ul.cocktail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1ch;
+  margin: 0.5rem 0;
+}
+
+ul.cocktail-list a.thumbnail-link {
+  border: none;
+}
+
+ul.cocktail-list a>img {
+  margin: 1ch 0 1.3ch;
+}

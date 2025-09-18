@@ -1,0 +1,35 @@
+/* General */
+
+#root {
+  padding: 0.75rem 0.9rem;
+}
+
+@media screen and (min-width: 992px) {
+  #root {
+    font-size: 1.3rem;
+    padding: 1.75rem 1.9rem;
+  }
+
+  a {
+    border: 1px solid var(--black);
+    transition: 0.35s ease;
+  }
+
+  a:hover {
+    color: var(--white-bright);
+    border-bottom-color: var(--white-bright);
+  }
+}
+
+/* Main */
+
+main {
+  -webkit-transition: ease 0.35s;
+  transition: ease 0.35s;
+}
+
+main.fade {
+  opacity: 0.05;
+  /* Needed for the overlay `nav` to work */
+  pointer-events: none;
+}

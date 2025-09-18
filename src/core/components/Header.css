@@ -1,0 +1,52 @@
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+}
+
+header h1 {
+  font-size: 1.8em;
+}
+
+@media screen and (min-width: 992px) {
+  header h1 {
+    font-size: 2em;
+  }
+}
+
+/* Navigation */
+header nav {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+
+  opacity: 0;
+  transform: translate(-100%, 114%);
+  transition:
+    opacity 0.35s ease-in,
+    transform 0.35s ease-in-out;
+  pointer-events: none;
+}
+
+header nav.active {
+  opacity: 1;
+  transform: translate(0%, 114%);
+  pointer-events: auto;
+}
+
+@media screen and (min-width: 992px) {
+  header nav {
+    position: static;
+    flex-direction: row;
+    gap: 1.8rem;
+
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}

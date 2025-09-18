@@ -1,0 +1,15 @@
+img.cocktail-thumbnail {
+  max-width: 200px;
+  border-radius: 8px;
+}
+
+img.cocktail-thumbnail.small {
+  width: 160px;
+}
+
+@media screen and (min-width: 992px) {
+  img.cocktail-thumbnail {
+    min-width: 200px;
+    max-width: 500px;
+  }
+}

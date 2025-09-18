@@ -1,0 +1,72 @@
+/* Color palette (Gruvbox) */
+
+:root {
+  --black: #242424;
+  --black-bright: #928374;
+  --red: #cc241d;
+  --red-bright: #fb4934;
+  --green: #98971a;
+  --green-bright: #b8bb26;
+  --yellow: #d79921;
+  --yellow-bright: #fabd2f;
+  --blue: #458588;
+  --blue-bright: #83a598;
+  --purple: #b16286;
+  --purple-bright: #d3869b;
+  --cyan: #689d6a;
+  --cyan-bright: #8ec07c;
+  --white: #ebdbb2;
+  --white-bright: #fefdd4;
+  --orange: #fe8019;
+  --orange-bright: #fe8019;
+}
+
+/* Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  min-width: 320px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  color: inherit;
+
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+/* Accessibility */
+
+:focus {
+  outline: 3px solid var(--white-bright);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}

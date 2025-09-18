@@ -1,0 +1,9 @@
+/* Index navigation */
+
+#index-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1ch;
+  margin-bottom: 0.5rem;
+}
