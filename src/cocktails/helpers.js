@@ -9,9 +9,14 @@ export async function fetchCocktails(cookbookIndex) {
   if (!response.ok) throw new Error(response.status);
 
   const data = await response.json();
-  return data.drinks
-    ? data.drinks.sort((a, b) => a.strDrink.localeCompare(b.strDrink))
-    : [];
+  return data.drinks ? sortCocktails(data.drinks) : [];
+}
+
+/**
+ * Return the cocktails alphabetically sorted.
+ */
+export function sortCocktails(cocktails) {
+  return cocktails.sort((a, b) => a.strDrink.localeCompare(b.strDrink));
 }
 
 /**
